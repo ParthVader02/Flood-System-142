@@ -11,7 +11,7 @@ def test_rivers_with_station():
 
 def test_stations_by_river():
     stations = build_station_list()
-    objects = ((station.station_id, station.measure_id, station.coord, station.typical_range, station.town) for station in stations )
-    rivers = stations_by_river(stations)
-    assert rivers.values() == objects
+    objects=[(station.station_id, station.measure_id, station.coord, station.typical_range, station.town) for station in stations]
+    rivers = list(stations_by_river(stations).values())
+    assert rivers.sort()== objects.sort()
 
