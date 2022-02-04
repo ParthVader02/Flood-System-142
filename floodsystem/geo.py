@@ -17,6 +17,10 @@ def stations_by_distance(stations, p):
     #Sort list of stations in order of distance
     return sorted_by_key([(station, haversine(station.coord, p)) for station in stations],1)
 
+#Task C
+def stations_within_radius(stations, centre, r):
+    return [station for station in stations if haversine(station.coord,centre)<r]
+
 #Task D
 def rivers_with_station(stations):
     # Get river names for rivers with at least 1 station
