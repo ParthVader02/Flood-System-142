@@ -10,6 +10,12 @@ from .utils import sorted_by_key  # noqa
 from collections import defaultdict
 from collections import Counter
 import numpy as np
+from haversine import haversine
+
+#Task B
+def stations_by_distance(stations, p):
+    #Sort list of stations in order of distance
+    return sorted_by_key([(station, haversine(station.coord, p)) for station in stations],1)
 
 #Task D
 def rivers_with_station(stations):
