@@ -1,7 +1,11 @@
-from floodsystem.geo import rivers_with_station 
-from floodsystem.geo import stations_by_river
-from floodsystem.geo import rivers_by_station_number
+from floodsystem.geo import rivers_with_station, stations_by_river, rivers_by_station_number, stations_by_distance
 from floodsystem.stationdata import build_station_list
+
+def test_stations_by_distance():
+    #builds list of stations
+    stations= build_station_list()
+    #checks that Cambridge is the closest station to a point in Cambridge
+    assert stations_by_distance(stations, (52.2053, 0.1218))[0].town == "Cambridge" 
 
 
 def test_rivers_with_station():
