@@ -8,9 +8,10 @@ geographical data.
 from calendar import c
 from .utils import sorted_by_key  # noqa
 from collections import defaultdict
+from haversine import haversine
 from collections import Counter
 import numpy as np
-from haversine import haversine
+
 
 #Task B
 def stations_by_distance(stations, p):
