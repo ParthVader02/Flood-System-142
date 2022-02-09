@@ -51,6 +51,7 @@ def rivers_by_station_number(stations, N):
         #append to list of tuples
         number.append((river, n))
     #sort by top N in descending order
-    top_N = sorted(number, key = lambda x: x[1], reverse = True)[:N]
-    return top_N
-        
+    top_N = sorted(number, key = lambda x: x[1], reverse = True)
+    while top_N[N][1] == top_N[N-1][1]:
+        N += 1
+    return top_N[0:N]
