@@ -7,6 +7,5 @@ def run():
     #Get top 9 rivers with most stations
     N = 9
     print(rivers_by_station_number(stations, N))
-
 if __name__ == "__main__":
     run()
