@@ -46,11 +46,15 @@ class MonitoringStation:
             return True
 
     def relative_water_level(self):
+        #checks for consistency
         if self.typical_range_consistent:
+            #attempts to output ratio
             try: 
                 return (self.latest_level-self.typical_range[0])/(self.typical_range[1]-self.typical_range[0])
+            #if a ValueError is raised (e.g. some None data was passed) it doesn't throw a hissy fit
             except:
                 return None
+        #if inconsistent range data, then returns None
         else:
             return None
 
