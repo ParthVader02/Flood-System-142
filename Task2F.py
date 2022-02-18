@@ -11,7 +11,7 @@ def run():
     levels = []
     for station in top_5:
         dates, levels= fetch_measure_levels(station.measure_id, 2)
-        plot_water_level_with_fit(station, dates, levels)
+        plot_water_level_with_fit(station, dates, levels, 4)
 
 
 if __name__ == "__main__":
