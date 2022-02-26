@@ -4,7 +4,7 @@ from floodsystem.analysis import polyfit
 import matplotlib
 import numpy as np
 from datetime import datetime, timedelta
-from .datafetcher import fetch_measure_levels
+from floodsystem.datafetcher import fetch_measure_levels
 def plot_water_levels(station, dates, levels):
     "plots time series of level data"
     
@@ -34,18 +34,17 @@ def plot_water_levels(station, dates, levels):
     plt.show()
 
 
-
-
-
-
-
 def plot_water_level_with_fit(station, dates, levels, p):
     x = matplotlib.dates.date2num(dates)
-    poly, d0 = polyfit(x, levels, p)
-
-    plt.plot(x, levels, '.')
-
-    x1 = np.linspace(x[0], x[-1], 30)
-
-    plt.plot(x1, poly(x1))
-    plt.show()
+    y = levels
+    plt.plot(x, y, '.')
+    if dates:
+        poly, d0 = polyfit(dates, levels, p)
+        x1 = np.linspace(d0, x[-1], 30)
+        plt.plot(x1, poly(x1 - d0))
+        plt.plot(dates, [max(levels)]*len(dates))
+        plt.plot(dates, [min(levels)]*len(dates))
+        plt.title(station.name)
+        plt.show()
+    else:
+        return None
