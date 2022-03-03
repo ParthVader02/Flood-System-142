@@ -21,8 +21,8 @@ def plot_water_levels(station, dates, levels):
         print("Past Level Data Unavailable")
     else:
         # if available, plots lines of maximum/minimum levels
-        plt.plot(dates, [max(levels)]*len(dates))
-        plt.plot(dates, [min(levels)]*len(dates))
+        plt.plot(dates, [station.typical_range[0]]*len(dates))
+        plt.plot(dates, [station.typical_range[1]]*len(dates))
         
     # set up plot nicely
     plt.xlabel('date')
